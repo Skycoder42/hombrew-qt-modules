@@ -5,7 +5,7 @@ class Qtjsonserializer < Formula
   sha256 "06972179e1e986e8c2a0ab0d823221b039ba9d0bbb3d08d2e00e28131c869b24"
   version "3.0.0-2"
 
-  keg_only "Because Qt itself is keg only"
+  keg_only "Qt itself is keg only which implies the same for Qt modules"
 
   option "with-docs", "Build documentation"
 
