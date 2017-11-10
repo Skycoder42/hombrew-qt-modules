@@ -5,9 +5,14 @@ class Qtjsonserializer < Formula
   sha256 "06972179e1e986e8c2a0ab0d823221b039ba9d0bbb3d08d2e00e28131c869b24"
   version "3.0.0-2"
 
+  keg_only "Because Qt itself is keg only"
+
+  option "with-docs", "Build documentation"
+
   depends_on "qt"
-  depends_on "python3" => :build
-  depends_on "doxygen" => :build
+  depends_on :xcode => :build
+  depends_on "python3" => [:build, "with-docs"]
+  depends_on "doxygen" => [:build, "with-docs"]
 
   def file_replace(file, base, suffix)
     text = File.read(file)
@@ -22,12 +27,15 @@ class Qtjsonserializer < Formula
     system "qmake", "-config", "release", ".."
     system "make", "qmake_all"
     system "make"
-    system "make", "doxygen"
+
+    if build.with? "docs"
+      system "make", "doxygen"
+    end
 
     # ENV.deparallelize
     instdir = "#{buildpath}/install"
     system "make", "INSTALL_ROOT=#{instdir}", "install"
-    prefix.install Dir["#{instdir}#{HOMEBREW_PREFIX}/Cellar/qt/5.9.2/*"]
+    prefix.install Dir["#{instdir}#{HOMEBREW_PREFIX}/Cellar/qt/#{Formula["qt"].version}/*"]
 
     # overwrite pri include
     file_replace "#{prefix}/mkspecs/modules/qt_lib_jsonserializer.pri", "QT_MODULE_LIB_BASE", "lib"
