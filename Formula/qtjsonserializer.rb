@@ -44,7 +44,6 @@ class Qtjsonserializer < Formula
 
     #create bash src
     File.open("#{prefix}/bashrc.sh", "w") { |file| file << "export QMAKEPATH=$QMAKEPATH:#{prefix}" }
-    FileUtils.chmod 0755, "#{prefix}/bashrc.sh"
   end
 
   test do
