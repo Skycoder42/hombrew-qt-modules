@@ -66,7 +66,7 @@ class Qtrestclient < Formula
 		}
 		EOS
 		
-		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{prefix}"
+		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{prefix}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].version}"
 		system "#{Formula["qt"].bin}/qmake", "test.pro"
 		system "make"
 		system "./test"
