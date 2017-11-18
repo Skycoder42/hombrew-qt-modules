@@ -25,6 +25,8 @@ class Qtrestclient < Formula
 		Dir.mkdir ".git"
 		Dir.mkdir "build"
 		Dir.chdir "build"
+		
+		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].version}"
 		system "qmake", "-config", "release", ".."
 		system "make", "qmake_all"
 		system "make"
