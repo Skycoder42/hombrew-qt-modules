@@ -1,22 +1,23 @@
-class Qtjsonserializer < Formula
-	version "3.1.0"
-	desc "A library to perform generic seralization and deserialization of QObjects"
-	homepage "https://skycoder42.github.io/QtJsonSerializer/"
-	url "https://github.com/Skycoder42/QtJsonSerializer/archive/#{version}.tar.gz"
-	sha256 "d28780fb04f66bcadb1a6498d373d12a51bb2ce5d813d9e89629a0b9330936f5"
+class Qtrestclient < Formula
+	version "1.2.5"
+	desc "A library for generic JSON-based REST-APIs, with a mechanism to map JSON to Qt objects"
+	homepage "https://github.com/Skycoder42/QtRestClient/"
+	url "https://github.com/Skycoder42/QtRestClient/archive/#{version}.tar.gz"
+	sha256 "e4ea041f87c89ffc8d3485947ca56092b4f58dfd34829ccf261537d048711c37"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
 	option "with-docs", "Build documentation"
 	
 	depends_on "qt"
+	depends_on "qtjsonserializer"
 	depends_on :xcode => :build
 	depends_on "python3" => [:build, "with-docs"]
 	depends_on "doxygen" => [:build, "with-docs"]
 	
 	def file_replace(file, base, suffix)
 		text = File.read(file)
-		replace = text.gsub(base, "#{base}/../../../qtjsonserializer/#{version}/#{suffix}")
+		replace = text.gsub(base, "#{base}/../../../qtrestclient/#{version}/#{suffix}")
 		File.open(file, "w") { |f| f << replace }
 	end
 	
@@ -38,9 +39,9 @@ class Qtjsonserializer < Formula
 		prefix.install Dir["#{instdir}#{HOMEBREW_PREFIX}/Cellar/qt/#{Formula["qt"].version}/*"]
 		
 		# overwrite pri include
-		file_replace "#{prefix}/mkspecs/modules/qt_lib_jsonserializer.pri", "QT_MODULE_LIB_BASE", "lib"
-		file_replace "#{prefix}/mkspecs/modules/qt_lib_jsonserializer.pri", "QT_MODULE_BIN_BASE", "bin"
-		file_replace "#{prefix}/mkspecs/modules/qt_lib_jsonserializer_private.pri", "QT_MODULE_LIB_BASE", "lib"
+		file_replace "#{prefix}/mkspecs/modules/qt_lib_restclient.pri", "QT_MODULE_LIB_BASE", "lib"
+		file_replace "#{prefix}/mkspecs/modules/qt_lib_restclient.pri", "QT_MODULE_BIN_BASE", "bin"
+		file_replace "#{prefix}/mkspecs/modules/qt_lib_restclient_private.pri", "QT_MODULE_LIB_BASE", "lib"
 		
 		#create bash src
 		File.open("#{prefix}/bashrc.sh", "w") { |file| file << "export QMAKEPATH=$QMAKEPATH:#{prefix}" }
@@ -49,16 +50,16 @@ class Qtjsonserializer < Formula
 	test do
 		(testpath/"test.pro").write <<~EOS
 		CONFIG -= app_bundle
-		QT += jsonserializer
+		QT += restclient
 		SOURCES += main.cpp
 		EOS
 		
 		(testpath/"main.cpp").write <<~EOS
 		#include <QtCore>
-		#include <QtJsonSerializer>
+		#include <QtRestClient>
 		int main() {
-			QJsonSerializer s;
-			qDebug() << s.serialize<int>(42);
+			QtRestClient::RestClient r;
+			qDebug() << r.serializer();
 			return 0;
 		}
 		EOS
