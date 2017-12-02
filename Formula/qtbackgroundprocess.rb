@@ -1,9 +1,9 @@
 class Qtbackgroundprocess < Formula
-	version "1.6.0"
+	version "1.6.0-3"
 	desc "A Library to create background applications with simple, automated foreground control"
 	homepage "https://skycoder42.github.io/QtBackgroundProcess/"
 	url "https://github.com/Skycoder42/QtBackgroundProcess/archive/#{version}.tar.gz"
-	sha256 "0b45c33f8101f6f4a6eedf9e3c4db776e17feedd1959fcc4eab24b6f4e84825f"
+	sha256 "4461bd8c1935650ad22ac05dff2a34bb41910b6dc25c36f74cd19decaba04b34"
 
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 
