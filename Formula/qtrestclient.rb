@@ -26,7 +26,7 @@ class Qtrestclient < Formula
 		Dir.mkdir "build"
 		Dir.chdir "build"
 		
-		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].version}"
+		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].pkg_version}"
 		system "qmake", "-config", "release", ".."
 		system "make", "qmake_all"
 		system "make"
@@ -38,7 +38,7 @@ class Qtrestclient < Formula
 		# ENV.deparallelize
 		instdir = "#{buildpath}/install"
 		system "make", "INSTALL_ROOT=#{instdir}", "install"
-		prefix.install Dir["#{instdir}#{HOMEBREW_PREFIX}/Cellar/qt/#{Formula["qt"].version}/*"]
+		prefix.install Dir["#{instdir}#{HOMEBREW_PREFIX}/Cellar/qt/#{Formula["qt"].pkg_version}/*"]
 		
 		# overwrite pri include
 		file_replace "#{prefix}/mkspecs/modules/qt_lib_restclient.pri", "QT_MODULE_LIB_BASE", "lib"
@@ -66,7 +66,7 @@ class Qtrestclient < Formula
 		}
 		EOS
 		
-		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{prefix}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].version}"
+		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{prefix}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].pkg_version}"
 		system "#{Formula["qt"].bin}/qmake", "test.pro"
 		system "make"
 		system "./test"

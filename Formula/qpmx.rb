@@ -23,7 +23,7 @@ class Qpmx < Formula
 		Dir.mkdir "build"
 		Dir.chdir "build"
 		
-		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].version}"
+		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].pkg_version}"
 		system "qmake", "-config", "release", ".."
 		system "make", "qmake_all"
 		system "make"
@@ -31,12 +31,12 @@ class Qpmx < Formula
 		# ENV.deparallelize
 		instdir = "#{buildpath}/install"
 		system "make", "INSTALL_ROOT=#{instdir}", "install"
-		prefix.install Dir["#{instdir}#{HOMEBREW_PREFIX}/Cellar/qt/#{Formula["qt"].version}/*"]
+		prefix.install Dir["#{instdir}#{HOMEBREW_PREFIX}/Cellar/qt/#{Formula["qt"].pkg_version}/*"]
 		
 		# adjust qt.conf
 		open(prefix/"bin/qt.conf", 'w') { |f|
 			f.puts "[Paths]"
-			f.puts "Prefix=#{HOMEBREW_PREFIX}/Cellar/qt/#{Formula["qt"].version}"
+			f.puts "Prefix=#{HOMEBREW_PREFIX}/Cellar/qt/#{Formula["qt"].pkg_version}"
 			f.puts "Plugins=#{prefix}/plugins"
 		}
 	end

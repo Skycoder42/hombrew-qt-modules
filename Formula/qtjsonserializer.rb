@@ -35,7 +35,7 @@ class Qtjsonserializer < Formula
 		# ENV.deparallelize
 		instdir = "#{buildpath}/install"
 		system "make", "INSTALL_ROOT=#{instdir}", "install"
-		prefix.install Dir["#{instdir}#{HOMEBREW_PREFIX}/Cellar/qt/#{Formula["qt"].version}/*"]
+		prefix.install Dir["#{instdir}#{HOMEBREW_PREFIX}/Cellar/qt/#{Formula["qt"].pkg_version}/*"]
 		
 		# overwrite pri include
 		file_replace "#{prefix}/mkspecs/modules/qt_lib_jsonserializer.pri", "QT_MODULE_LIB_BASE", "lib"
