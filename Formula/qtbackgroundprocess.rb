@@ -1,5 +1,6 @@
 class Qtbackgroundprocess < Formula
 	version "1.6.0-3"
+	revision 1
 	desc "A Library to create background applications with simple, automated foreground control"
 	homepage "https://skycoder42.github.io/QtBackgroundProcess/"
 	url "https://github.com/Skycoder42/QtBackgroundProcess/archive/#{version}.tar.gz"
@@ -16,7 +17,7 @@ class Qtbackgroundprocess < Formula
 
 	def file_replace(file, base, suffix)
 		text = File.read(file)
-		replace = text.gsub(base, "#{base}/../../../qtbackgroundprocess/#{version}/#{suffix}")
+		replace = text.gsub(base, "#{base}/../../../qtbackgroundprocess/#{pkg_version}/#{suffix}")
 		File.open(file, "w") { |f| f << replace }
 	end
 

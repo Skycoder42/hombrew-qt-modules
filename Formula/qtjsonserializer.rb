@@ -1,5 +1,6 @@
 class Qtjsonserializer < Formula
 	version "3.1.0"
+	revision 1
 	desc "A library to perform generic seralization and deserialization of QObjects"
 	homepage "https://skycoder42.github.io/QtJsonSerializer/"
 	url "https://github.com/Skycoder42/QtJsonSerializer/archive/#{version}.tar.gz"
@@ -16,7 +17,7 @@ class Qtjsonserializer < Formula
 	
 	def file_replace(file, base, suffix)
 		text = File.read(file)
-		replace = text.gsub(base, "#{base}/../../../qtjsonserializer/#{version}/#{suffix}")
+		replace = text.gsub(base, "#{base}/../../../qtjsonserializer/#{pkg_version}/#{suffix}")
 		File.open(file, "w") { |f| f << replace }
 	end
 	

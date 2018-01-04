@@ -2,6 +2,7 @@ class Qpmx < Formula
 	desc "A frontend for qpm, to provide source and build caching"
 	homepage "https://github.com/Skycoder42/qpmx"
 	version "1.3.0"
+	revision 1
 	url "https://github.com/Skycoder42/qpmx/archive/#{version}.tar.gz"
 	sha256 "d153308bc224ffc294429d274561436b1d19bc19286b3dd91136e128cd66e6ca"
 	

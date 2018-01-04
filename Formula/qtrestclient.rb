@@ -1,5 +1,6 @@
 class Qtrestclient < Formula
 	version "1.2.5"
+	revision 1
 	desc "A library for generic JSON-based REST-APIs, with a mechanism to map JSON to Qt objects"
 	homepage "https://github.com/Skycoder42/QtRestClient/"
 	url "https://github.com/Skycoder42/QtRestClient/archive/#{version}.tar.gz"
@@ -17,7 +18,7 @@ class Qtrestclient < Formula
 	
 	def file_replace(file, base, suffix)
 		text = File.read(file)
-		replace = text.gsub(base, "#{base}/../../../qtrestclient/#{version}/#{suffix}")
+		replace = text.gsub(base, "#{base}/../../../qtrestclient/#{pkg_version}/#{suffix}")
 		File.open(file, "w") { |f| f << replace }
 	end
 	
