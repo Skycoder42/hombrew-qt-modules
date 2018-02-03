@@ -11,7 +11,6 @@ env:
 
 before_install:
   - brew update
-  - brew upgrade
   - brew tap Skycoder42/qt-modules
 
 script:
