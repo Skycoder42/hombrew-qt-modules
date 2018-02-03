@@ -27,6 +27,8 @@ class Qtdatasync < Formula
 	end
 	
 	def install
+		ENV["HOME"] = Dir.pwd + "/src/3rdparty"
+		
 		Dir.mkdir ".git"
 		Dir.mkdir "build"
 		Dir.chdir "build"
