@@ -34,6 +34,8 @@ class Qtdatasync < Formula
 		Dir.chdir "build"
 		
 		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].pkg_version}"
+		system "echo", "$HOME"
+		system "echo", "#{ENV["HOME"]}"
 		system "qmake", "CONFIG+=system_cryptopp", "-config", "release", ".."
 		system "make", "qmake_all"
 		system "make"
