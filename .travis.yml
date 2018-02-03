@@ -1,0 +1,19 @@
+language: cpp
+
+os: osx
+osx_image: xcode9.2
+
+env:
+  - FORMULA="qtjsonserializer"
+  - FORMULA="qtrestclient"
+  - FORMULA="qpmx"
+  - FORMULA="qtdatasync"
+
+before_install:
+  - brew update
+  - brew upgrade
+  - brew tap Skycoder42/qt-modules
+
+script:
+  - brew install $FORMULA
+  - brew test $FORMULA
