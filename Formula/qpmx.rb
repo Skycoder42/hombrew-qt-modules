@@ -4,7 +4,7 @@ class Qpmx < Formula
 	version "1.4.0"
 	revision 1
 	url "https://github.com/Skycoder42/qpmx/archive/#{version}.tar.gz"
-	sha256 "d153308bc224ffc294429d274561436b1d19bc19286b3dd91136e128cd66e6ca"
+	sha256 "8976629f65cdaa8bb8b6ea34de0c53d1d3b134895fe341078f741277dc922cc2"
 	
 	resource "qcliparser" do
 		url "https://github.com/Skycoder42/QCliParser/archive/1.0.0.tar.gz"
