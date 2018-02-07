@@ -1,7 +1,7 @@
 class Qpmx < Formula
 	desc "A frontend for qpm, to provide source and build caching"
 	homepage "https://github.com/Skycoder42/qpmx"
-	version "1.3.0"
+	version "1.4.0"
 	revision 1
 	url "https://github.com/Skycoder42/qpmx/archive/#{version}.tar.gz"
 	sha256 "d153308bc224ffc294429d274561436b1d19bc19286b3dd91136e128cd66e6ca"
@@ -14,13 +14,11 @@ class Qpmx < Formula
 	depends_on "qt"
 	depends_on "qtjsonserializer"
 	depends_on :xcode => :build
+	depends_on "qpm" => :recommended
 	
 	def install
 		resource("qcliparser").stage { (buildpath/"submodules/qcliparser").install Dir["*"] }
 		
-		open(".qmake.conf", 'a') { |f|
-			f.puts "CONFIG += no_installer"
-		}
 		Dir.mkdir "build"
 		Dir.chdir "build"
 		
