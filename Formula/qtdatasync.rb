@@ -31,9 +31,11 @@ class Qtdatasync < Formula
 		Dir.mkdir "build"
 		Dir.chdir "build"
 		
+		ENV["PATH"] = "#{ENV["PATH"]}:#{HOMEBREW_PREFIX}/Cellar/qpm/#{Formula["qpm"].pkg_version}"
+		ENV["PATH"] = "#{ENV["PATH"]}:#{HOMEBREW_PREFIX}/Cellar/qpm/#{Formula["qpm"].pkg_version}/bin"
 		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].pkg_version}"
 		ENV["QPMX_CACHE_DIR"] = "#{ENV["HOME"]}/qpmx-cache"
-		system "echo", "#{ENV["QPMX_CACHE_DIR"]}"
+		system "which", "qpm"
 		system "mkdir", "-p", "#{ENV["QPMX_CACHE_DIR"]}"
 		system "qmake", "CONFIG+=system_cryptopp", "-config", "release", ".."
 		system "make", "qmake_all"
