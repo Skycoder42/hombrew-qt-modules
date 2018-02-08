@@ -76,6 +76,7 @@ class Qtdatasync < Formula
 	test do
 		(testpath/"test.pro").write <<~EOS
 			CONFIG -= app_bundle
+			CONFIG += c++14
 			QT += datasync
 			SOURCES += main.cpp
 		EOS
