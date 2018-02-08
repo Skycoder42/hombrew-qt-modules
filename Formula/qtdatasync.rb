@@ -26,15 +26,15 @@ class Qtdatasync < Formula
 		File.open(file, "w") { |f| f << replace }
 	end
 	
-	def install	
+	def install
 		Dir.mkdir ".git"
 		Dir.mkdir "build"
 		Dir.chdir "build"
 		
 		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].pkg_version}"
-		ENV.deparallelize
-		system "echo", "$HOME"
-		system "echo", "#{ENV["HOME"]}"
+		ENV["QPMX_CACHE_DIR"] = "#{ENV["HOME"]}/qpmx-cache"
+		system "echo", "#{ENV["QPMX_CACHE_DIR"]}"
+		system "mkdir", "-p", "#{ENV["QPMX_CACHE_DIR"]}"
 		system "qmake", "CONFIG+=system_cryptopp", "-config", "release", ".."
 		system "make", "qmake_all"
 		system "make"
