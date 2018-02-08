@@ -29,8 +29,8 @@ class Qtdatasync < Formula
 	
 	def install
 		# mangle in cryptopp
-		FileUtils.ln_s "#{HOMEBREW_PREFIX}/Cellar/cryptopp/#{Formula["qtjsonserializer"].pkg_version}/lib", "src/3rdparty/cryptopp/lib"
-		FileUtils.ln_s "#{HOMEBREW_PREFIX}/Cellar/cryptopp/#{Formula["qtjsonserializer"].pkg_version}/include", "src/3rdparty/cryptopp/include"
+		FileUtils.ln_s "#{HOMEBREW_PREFIX}/Cellar/cryptopp/#{Formula["cryptopp"].pkg_version}/lib", "src/3rdparty/cryptopp/lib"
+		FileUtils.ln_s "#{HOMEBREW_PREFIX}/Cellar/cryptopp/#{Formula["cryptopp"].pkg_version}/include", "src/3rdparty/cryptopp/include"
 		
 		Dir.mkdir ".git"
 		Dir.mkdir "build"
