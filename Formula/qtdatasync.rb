@@ -32,7 +32,13 @@ class Qtdatasync < Formula
 		FileUtils.ln_s "#{HOMEBREW_PREFIX}/Cellar/cryptopp/#{Formula["cryptopp"].pkg_version}/lib", "src/3rdparty/cryptopp/lib"
 		FileUtils.ln_s "#{HOMEBREW_PREFIX}/Cellar/cryptopp/#{Formula["cryptopp"].pkg_version}/include", "src/3rdparty/cryptopp/include"
 		# fix keychain config
-		File.open("src/plugins/keystores/keystores.pro", "a") { |file| file << "keychain.CONFIG += no_lrelease_target" }
+		File.open("src/plugins/keystores/keystores.pro", "r") do |orig|
+			File.unlink("src/plugins/keystores/keystores.pro")
+			File.open("src/plugins/keystores/keystores.pro", "w") do |new|
+				new.write "keychain.CONFIG += no_lrelease_target\n"
+				new.write(orig.read())
+			end
+		end
 		
 		Dir.mkdir ".git"
 		Dir.mkdir "build"
