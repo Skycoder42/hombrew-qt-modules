@@ -31,6 +31,8 @@ class Qtdatasync < Formula
 		# mangle in cryptopp
 		FileUtils.ln_s "#{HOMEBREW_PREFIX}/Cellar/cryptopp/#{Formula["cryptopp"].pkg_version}/lib", "src/3rdparty/cryptopp/lib"
 		FileUtils.ln_s "#{HOMEBREW_PREFIX}/Cellar/cryptopp/#{Formula["cryptopp"].pkg_version}/include", "src/3rdparty/cryptopp/include"
+		# fix keychain config
+		File.open("src/plugins/keystores/keystores.pro", "a") { |file| file << "keychain.CONFIG += no_lrelease_target" }
 		
 		Dir.mkdir ".git"
 		Dir.mkdir "build"
