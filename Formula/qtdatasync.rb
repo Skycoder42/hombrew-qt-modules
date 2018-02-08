@@ -85,7 +85,7 @@ class Qtdatasync < Formula
 			#include <QtCore>
 			#include <QtDataSync>
 			int main() {
-				QtRestClient::Setup s;
+				QtDataSync::Setup s;
 				return 0;
 			}
 		EOS
