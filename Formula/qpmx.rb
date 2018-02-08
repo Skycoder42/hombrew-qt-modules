@@ -23,7 +23,6 @@ class Qpmx < Formula
 		Dir.chdir "build"
 		
 		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].pkg_version}"
-		ENV.deparallelize
 		system "qmake", "-config", "release", ".."
 		system "make", "qmake_all"
 		system "make"
