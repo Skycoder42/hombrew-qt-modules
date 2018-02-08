@@ -16,6 +16,7 @@ class Qtdatasync < Formula
 	depends_on :xcode => :build
 	depends_on "pkg-config" => :build
 	depends_on "qpmx" => :build
+	depends_on "qpm" => :build
 	depends_on "python3" => [:build, "with-docs"]
 	depends_on "doxygen" => [:build, "with-docs"]
 	depends_on "graphviz" => [:build, "with-docs"]
@@ -27,17 +28,18 @@ class Qtdatasync < Formula
 	end
 	
 	def install
+		# mangle in cryptopp
+		FileUtils.ln_s "#{HOMEBREW_PREFIX}/Cellar/cryptopp/#{Formula["qtjsonserializer"].pkg_version}/lib", "src/3rdparty/cryptopp/lib"
+		FileUtils.ln_s "#{HOMEBREW_PREFIX}/Cellar/cryptopp/#{Formula["qtjsonserializer"].pkg_version}/include", "src/3rdparty/cryptopp/include"
+		
 		Dir.mkdir ".git"
 		Dir.mkdir "build"
 		Dir.chdir "build"
 		
-		ENV["PATH"] = "#{ENV["PATH"]}:#{HOMEBREW_PREFIX}/Cellar/qpm/#{Formula["qpm"].pkg_version}"
-		ENV["PATH"] = "#{ENV["PATH"]}:#{HOMEBREW_PREFIX}/Cellar/qpm/#{Formula["qpm"].pkg_version}/bin"
 		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].pkg_version}"
 		ENV["QPMX_CACHE_DIR"] = "#{ENV["HOME"]}/qpmx-cache"
-		system "which", "qpm"
 		system "mkdir", "-p", "#{ENV["QPMX_CACHE_DIR"]}"
-		system "qmake", "CONFIG+=system_cryptopp", "-config", "release", ".."
+		system "qmake", "-config", "release", ".."
 		system "make", "qmake_all"
 		system "make"
 		system "make", "lrelease"
