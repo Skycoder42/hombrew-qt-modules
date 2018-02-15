@@ -1,10 +1,10 @@
 class Qtjsonserializer < Formula
-	version "3.1.0"
+	version "3.1.1"
 	revision 1
 	desc "A library to perform generic seralization and deserialization of QObjects"
 	homepage "https://skycoder42.github.io/QtJsonSerializer/"
 	url "https://github.com/Skycoder42/QtJsonSerializer/archive/#{version}.tar.gz"
-	sha256 "d28780fb04f66bcadb1a6498d373d12a51bb2ce5d813d9e89629a0b9330936f5"
+	sha256 "2c2f01a795bb32c6233604d4a1f5b1ad2813731afc437bcda94c392a32cbd155"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
@@ -14,6 +14,7 @@ class Qtjsonserializer < Formula
 	depends_on :xcode => :build
 	depends_on "python3" => [:build, "with-docs"]
 	depends_on "doxygen" => [:build, "with-docs"]
+	depends_on "graphviz" => [:build, "with-docs"]
 	
 	def file_replace(file, base, suffix)
 		text = File.read(file)
