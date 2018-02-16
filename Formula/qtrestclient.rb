@@ -1,10 +1,10 @@
 class Qtrestclient < Formula
-	version "1.2.5"
+	version "1.2.6"
 	revision 1
 	desc "A library for generic JSON-based REST-APIs, with a mechanism to map JSON to Qt objects"
 	homepage "https://github.com/Skycoder42/QtRestClient/"
 	url "https://github.com/Skycoder42/QtRestClient/archive/#{version}.tar.gz"
-	sha256 "e4ea041f87c89ffc8d3485947ca56092b4f58dfd34829ccf261537d048711c37"
+	sha256 "a5973d753563918b95e932b36e25095df498eb51c9c52265f5f32bf4a4b9cb26"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
@@ -15,6 +15,7 @@ class Qtrestclient < Formula
 	depends_on :xcode => :build
 	depends_on "python3" => [:build, "with-docs"]
 	depends_on "doxygen" => [:build, "with-docs"]
+	depends_on "graphviz" => [:build, "with-docs"]
 	
 	def file_replace(file, base, suffix)
 		text = File.read(file)
