@@ -1,10 +1,10 @@
 class Qtdatasync < Formula
-	version "4.0.0"
+	version "4.0.1"
 	revision 1
 	desc "A simple offline-first synchronisation framework, to synchronize data of Qt applications between devices"
 	homepage "https://github.com/Skycoder42/QtDataSync"
 	url "https://github.com/Skycoder42/QtDataSync/archive/#{version}.tar.gz"
-	sha256 "543e6f51ec22ae045a2c61ea1952d406d587b2ef186426cd29f65e3ee9b80d85"
+	sha256 "3154000548d9108138118203bfe0749f2fbc388c99a9f2d3915148f10423fee9"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
