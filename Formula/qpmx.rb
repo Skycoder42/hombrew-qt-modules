@@ -1,10 +1,10 @@
 class Qpmx < Formula
 	desc "A frontend for qpm, to provide source and build caching"
 	homepage "https://github.com/Skycoder42/qpmx"
-	version "1.4.0"
+	version "1.4.1"
 	revision 1
 	url "https://github.com/Skycoder42/qpmx/archive/#{version}.tar.gz"
-	sha256 "8976629f65cdaa8bb8b6ea34de0c53d1d3b134895fe341078f741277dc922cc2"
+	sha256 "68d08c522a7cc0d391c94bdcf88c620b9de7f58527ca505850f2a37e61525614"
 	
 	resource "qcliparser" do
 		url "https://github.com/Skycoder42/QCliParser/archive/1.0.0.tar.gz"
