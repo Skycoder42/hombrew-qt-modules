@@ -67,7 +67,8 @@ class Qtdatasync < Formula
 		file_replace "#{prefix}/mkspecs/modules/qt_lib_datasync_private.pri", "QT_MODULE_LIB_BASE", "lib"
 		
 		#create bash src
-		File.open("#{prefix}/bashrc.sh", "w") { |file| 
+		File.open("#{prefix}/bashrc.sh", "w") { |file|
+			file << "export QMAKEPATH=$QMAKEPATH:#{prefix}"
 			file << ""
 			file << "echo WARNING: In order to find the keystore plugins, you must export PLUGIN_KEYSTORES_PATH before running an application built against datasync"
 		}
