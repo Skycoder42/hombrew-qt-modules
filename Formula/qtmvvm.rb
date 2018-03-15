@@ -91,6 +91,7 @@ class Qtmvvm < Formula
 			}
 		EOS
 		
+		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{prefix}"
 		system "#{Formula["qt"].bin}/qmake", "test.pro"
 		system "make"
 		system "./test"
