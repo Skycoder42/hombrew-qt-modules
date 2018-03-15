@@ -8,6 +8,7 @@ env:
   - FORMULA="qtrestclient"
   - FORMULA="qpmx"
   - FORMULA="qtdatasync"
+  - FORMULA="qtmvvm"
 
 before_install:
   - brew update
