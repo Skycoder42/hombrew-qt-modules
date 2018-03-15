@@ -86,7 +86,7 @@ class Qtmvvm < Formula
 			#include <QtCore>
 			#include <QtMvvmCore>
 			int main() {
-				QtMvvm::information("title", "text");
+				QtMvvm::MessageConfig config;
 				return 0;
 			}
 		EOS
