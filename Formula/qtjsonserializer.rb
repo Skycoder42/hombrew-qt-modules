@@ -1,10 +1,10 @@
 class Qtjsonserializer < Formula
-	version "3.1.1"
+	version "3.1.2"
 	revision 1
 	desc "A library to perform generic seralization and deserialization of QObjects"
 	homepage "https://skycoder42.github.io/QtJsonSerializer/"
 	url "https://github.com/Skycoder42/QtJsonSerializer/archive/#{version}.tar.gz"
-	sha256 "2c2f01a795bb32c6233604d4a1f5b1ad2813731afc437bcda94c392a32cbd155"
+	sha256 "2994f6f88995aeda97027a51ecb455df7c9cb1e8ce220edc2ad8e661ea5a1ebf"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
