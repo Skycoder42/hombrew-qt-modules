@@ -1,10 +1,10 @@
 class Qtrestclient < Formula
-	version "1.2.6"
+	version "2.0.0"
 	revision 1
 	desc "A library for generic JSON-based REST-APIs, with a mechanism to map JSON to Qt objects"
 	homepage "https://github.com/Skycoder42/QtRestClient/"
 	url "https://github.com/Skycoder42/QtRestClient/archive/#{version}.tar.gz"
-	sha256 "a5973d753563918b95e932b36e25095df498eb51c9c52265f5f32bf4a4b9cb26"
+	sha256 "e604a7936fd19f8b5f62aa50ab48f93fc1ec7f10fc725e60f2c14e96e0ef7009"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
