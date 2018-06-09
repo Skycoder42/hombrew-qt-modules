@@ -79,6 +79,8 @@ class Qtservice < Formula
 		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{prefix}"
 		system "#{Formula["qt"].bin}/qmake", "test.pro"
 		system "make"
+		
+		ENV["QT_PLUGIN_PATH"] = "#{ENV["QT_PLUGIN_PATH"]}:#{prefix}/plugins"
 		system "./test"
 	end
 end
