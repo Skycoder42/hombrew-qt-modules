@@ -1,10 +1,10 @@
 class Qtdatasync < Formula
-	version "4.0.1"
+	version "4.1.0"
 	revision 1
 	desc "A simple offline-first synchronisation framework, to synchronize data of Qt applications between devices"
 	homepage "https://github.com/Skycoder42/QtDataSync"
 	url "https://github.com/Skycoder42/QtDataSync/archive/#{version}.tar.gz"
-	sha256 "3154000548d9108138118203bfe0749f2fbc388c99a9f2d3915148f10423fee9"
+	sha256 "289abfdda693430b46b4f0a1fb8fe00ceaa97d8baccd7518a2626b22329bebd2"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
@@ -12,6 +12,7 @@ class Qtdatasync < Formula
 	
 	depends_on "qt"
 	depends_on "qtjsonserializer"
+	depends_on "qtservice"
 	depends_on "cryptopp"
 	depends_on :xcode => :build
 	depends_on "pkg-config" => :build
@@ -45,6 +46,7 @@ class Qtdatasync < Formula
 		Dir.chdir "build"
 		
 		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].pkg_version}"
+		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/qtservice/#{Formula["qtservice"].pkg_version}"
 		ENV["QPMX_CACHE_DIR"] = "#{ENV["HOME"]}/qpmx-cache"
 		system "mkdir", "-p", "#{ENV["QPMX_CACHE_DIR"]}"
 		system "qmake", "-config", "release", ".."
@@ -91,7 +93,9 @@ class Qtdatasync < Formula
 			}
 		EOS
 		
-		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{prefix}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].pkg_version}"
+		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{prefix}"
+		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/qtjsonserializer/#{Formula["qtjsonserializer"].pkg_version}"
+		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/qtservice/#{Formula["qtservice"].pkg_version}"
 		system "#{Formula["qt"].bin}/qmake", "test.pro"
 		system "make"
 		system "./test"
