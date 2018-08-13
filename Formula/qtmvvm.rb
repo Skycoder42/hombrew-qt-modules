@@ -1,10 +1,10 @@
 class Qtmvvm < Formula
-	version "1.1.0"
+	version "1.1.1"
 	revision 1
 	desc "A mvvm oriented library for Qt, to create Projects for Widgets and Quick in parallel"
 	homepage "https://github.com/Skycoder42/QtMvvm"
 	url "https://github.com/Skycoder42/QtMvvm/archive/#{version}.tar.gz"
-	sha256 "be0f4a00ba0a77ac423176482228d66d48670f5acf5f9965bf4b6db576b490ba"
+	sha256 "1a90dbbe472abd15cd5e66c0ca5f6990436ed3db48b303737142131a180ee359"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
