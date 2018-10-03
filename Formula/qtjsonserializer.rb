@@ -26,12 +26,12 @@ class Qtjsonserializer < Formula
 	end
 	
 	def create_mod_pri(base, mod)
-		File.open("#{base}/mkspecs/modules/qt_lib_#{mod}.pri") { |f|
+		File.open("#{base}/mkspecs/modules/qt_lib_#{mod}.pri", "w") { |f|
 			f << "include($$PWD/brew.pri)"
 			f << "include($$PWD/../modules-inst/qt_lib_#{mod}.pri)"
 			f << "QT.#{mod}.priority = 1"
 		}
-		File.open("#{base}/mkspecs/modules/qt_lib_#{mod}_private.pri") { |f|
+		File.open("#{base}/mkspecs/modules/qt_lib_#{mod}_private.pri", "w") { |f|
 			f << "include($$PWD/brew.pri)"
 			f << "include($$PWD/../modules-inst/qt_lib_#{mod}_private.pri)"
 			f << "QT.#{mod}_private.priority = 1"
@@ -39,7 +39,7 @@ class Qtjsonserializer < Formula
 	end
 	
 	def create_tool_pri(base, tool)
-		File.open("#{base}/mkspecs/modules/qt_tool_#{tool}.pri") { |f|
+		File.open("#{base}/mkspecs/modules/qt_tool_#{tool}.pri", "w") { |f|
 			f << "QT_TOOL.#{tool}.binary = \"#{base}/bin/#{tool}\""
 			f << "QT_TOOL.#{tool}.depends = core"
 		}
