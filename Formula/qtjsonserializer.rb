@@ -18,30 +18,30 @@ class Qtjsonserializer < Formula
 	
 	def create_qtpath_pri(base)
 		File.open("#{base}/mkspecs/modules/brew.pri", "w") { |f|
-			f << "QT_MODULE_BIN_BASE = \"#{base}/bin\""
-			f << "QT_MODULE_INCLUDE_BASE = \"#{base}/include\""
-			f << "QT_MODULE_LIB_BASE = \"#{base}/lib\""
-			f << "QT_MODULE_HOST_LIB_BASE = \"#{base}/lib\""
+			f << "QT_MODULE_BIN_BASE = \"#{base}/bin\"\n"
+			f << "QT_MODULE_INCLUDE_BASE = \"#{base}/include\"\n"
+			f << "QT_MODULE_LIB_BASE = \"#{base}/lib\"\n"
+			f << "QT_MODULE_HOST_LIB_BASE = \"#{base}/lib\"\n"
 		}
 	end
 	
 	def create_mod_pri(base, mod)
 		File.open("#{base}/mkspecs/modules/qt_lib_#{mod}.pri", "w") { |f|
-			f << "include($$PWD/brew.pri)"
-			f << "include($$PWD/../modules-inst/qt_lib_#{mod}.pri)"
-			f << "QT.#{mod}.priority = 1"
+			f << "include($$PWD/brew.pri)\n"
+			f << "include($$PWD/../modules-inst/qt_lib_#{mod}.pri)\n"
+			f << "QT.#{mod}.priority = 1\n"
 		}
 		File.open("#{base}/mkspecs/modules/qt_lib_#{mod}_private.pri", "w") { |f|
-			f << "include($$PWD/brew.pri)"
-			f << "include($$PWD/../modules-inst/qt_lib_#{mod}_private.pri)"
-			f << "QT.#{mod}_private.priority = 1"
+			f << "include($$PWD/brew.pri)\n"
+			f << "include($$PWD/../modules-inst/qt_lib_#{mod}_private.pri)\n"
+			f << "QT.#{mod}_private.priority = 1\n"
 		}
 	end
 	
 	def create_tool_pri(base, tool)
 		File.open("#{base}/mkspecs/modules/qt_tool_#{tool}.pri", "w") { |f|
-			f << "QT_TOOL.#{tool}.binary = \"#{base}/bin/#{tool}\""
-			f << "QT_TOOL.#{tool}.depends = core"
+			f << "QT_TOOL.#{tool}.binary = \"#{base}/bin/#{tool}\"\n"
+			f << "QT_TOOL.#{tool}.depends = core\n"
 		}
 	end
 	
