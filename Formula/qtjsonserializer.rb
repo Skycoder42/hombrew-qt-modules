@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../base/Qtformula.rb"
+require_relative "../base/Qtformula"
 
 class Qtjsonserializer < Qtformula
 	version "3.2.0"

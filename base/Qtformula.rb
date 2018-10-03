@@ -1,4 +1,4 @@
-class Qtjsonserializer < Formula	
+class Qtformula < Formula
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
 	option "with-docs", "Build documentation"
