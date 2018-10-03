@@ -1,4 +1,4 @@
-require_relative Qtformula
+require_relative "../base/Qtformula"
 
 class Qtjsonserializer < Qtformula
 	version "3.2.0"
