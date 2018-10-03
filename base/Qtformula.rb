@@ -1,14 +1,4 @@
-class Qtformula < Formula
-	keg_only "Qt itself is keg only which implies the same for Qt modules"
-	
-	option "with-docs", "Build documentation"
-	
-	depends_on "qt"
-	depends_on :xcode => :build
-	depends_on "python3" => [:build, "with-docs"]
-	depends_on "doxygen" => [:build, "with-docs"]
-	depends_on "graphviz" => [:build, "with-docs"]
-	
+class Qtformula < Formula	
 	def create_qtpath_pri(base)
 		File.open("#{base}/mkspecs/modules/brew.pri", "w") { |f|
 			f << "QT_MODULE_BIN_BASE = \"#{base}/bin\"\n"

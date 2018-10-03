@@ -8,6 +8,16 @@ class Qtjsonserializer < Qtformula
 	url "https://github.com/Skycoder42/QtJsonSerializer/archive/#{version}.tar.gz"
 	sha256 "3b0f1b339c6c26b1c8781364269405158b86faa64c765da388c5d01bb3441c82"
 	
+	keg_only "Qt itself is keg only which implies the same for Qt modules"
+	
+	option "with-docs", "Build documentation"
+	
+	depends_on "qt"
+	depends_on :xcode => :build
+	depends_on "python3" => [:build, "with-docs"]
+	depends_on "doxygen" => [:build, "with-docs"]
+	depends_on "graphviz" => [:build, "with-docs"]
+	
 	def install
 		build_and_install_default
 		create_mod_pri prefix, "jsonserializer"
