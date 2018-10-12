@@ -32,9 +32,14 @@ class Qtformula < Formula
 		Dir.mkdir ".git"
 		Dir.mkdir "build"
 		Dir.chdir "build"
+		
+		ENV["QPMX_CACHE_DIR"] = "#{ENV["HOME"]}/.qpmx-cache"
+		system "mkdir", "-p", "#{ENV["QPMX_CACHE_DIR"]}"
+		
 		system "qmake", qmake_args, ".."
 		system "make", "qmake_all"
 		system "make"
+		system "make", "lrelease"
 		
 		if build.with? "docs"
 			system "make", "doxygen"
@@ -50,7 +55,10 @@ class Qtformula < Formula
 		create_qtpath_pri prefix
 		
 		#create bash src
-		File.open("#{prefix}/bashrc.sh", "w") { |file| file << "export QMAKEPATH=$QMAKEPATH:#{prefix}" }
+		File.open("#{prefix}/bashrc.sh", "w") { |f|
+			f << "export QMAKEPATH=$QMAKEPATH:#{prefix}\n\n"
+			f << "echo 'WARNING: In order to find eventual plugins, you must export QT_PLUGIN_PATH before running an application built against this library'\n"
+		}
 	end
 	
 	def build_and_install_default
