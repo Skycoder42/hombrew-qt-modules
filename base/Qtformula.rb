@@ -28,6 +28,12 @@ class Qtformula < Formula
 		}
 	end
 	
+	def add_modules(*mods)
+		for mod in mods do
+			ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{HOMEBREW_PREFIX}/Cellar/#{mod}/#{Formula[mod].pkg_version}"
+		end
+	end
+	
 	def build_and_install(*qmake_args)
 		Dir.mkdir ".git"
 		Dir.mkdir "build"
