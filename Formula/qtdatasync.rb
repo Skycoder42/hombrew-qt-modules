@@ -19,26 +19,29 @@ class Qtdatasync < Qtformula
 	depends_on :xcode => :build
 	depends_on "qpmx" => :build
 	depends_on "qpm" => :build
+	depends_on "pkg-config" => :build
 	depends_on "python3" => [:build, "with-docs"]
 	depends_on "doxygen" => [:build, "with-docs"]
 	depends_on "graphviz" => [:build, "with-docs"]
 	
 	def install
-		# mangle in cryptopp
-		FileUtils.ln_s "#{HOMEBREW_PREFIX}/Cellar/cryptopp/#{Formula["cryptopp"].pkg_version}/lib", "src/3rdparty/cryptopp/lib"
-		FileUtils.ln_s "#{HOMEBREW_PREFIX}/Cellar/cryptopp/#{Formula["cryptopp"].pkg_version}/include", "src/3rdparty/cryptopp/include"
-#		# fix keychain config
-# 		File.open("src/plugins/keystores/keystores.pro", "r") do |orig|
-# 			File.unlink("src/plugins/keystores/keystores.pro")
-# 			File.open("src/plugins/keystores/keystores.pro", "w") do |new|
-# 				new.write "keychain.CONFIG += no_lrelease_target\n"
-# 				new.write(orig.read())
-# 			end
-# 		end
+		# create cryptopp pkgconfig
+		Dir.mkdir "pkgconfig"
+		File.open("pkgconfig/libcrypto++.pc", "w") do |pcfile|
+			pcfile.write("prefix=#{HOMEBREW_PREFIX}/Cellar/cryptopp/#{Formula["cryptopp"].pkg_version}\n")
+			pcfile.write("libdir=${prefix}/lib\n")
+			pcfile.write("includedir=${prefix}/include\n")
+			pcfile.write("Name: libcrypto++-#{Formula["cryptopp"].pkg_version}\n")
+			pcfile.write("Description: Class library of cryptographic schemes\n")
+			pcfile.write("Version: #{Formula["cryptopp"].pkg_version}\n")
+			pcfile.write("Libs: -L${libdir} -lcryptopp\n")
+			pcfile.write("Cflags: -I${includedir} \n")
+		end
+		ENV["PKG_CONFIG_PATH"] = "#{Dir.pwd}/pkgconfig:#{ENV["PKG_CONFIG_PATH"]}"
 		
-		# build and install
+		# build and install (with system_cryptopp)
 		add_modules "qtjsonserializer", "qtservice"
-		build_and_install_default
+		build_and_install "CONFIG+=release" "CONFIG+=system_cryptopp"
 		create_mod_pri prefix, "datasync"
 	end
 	
