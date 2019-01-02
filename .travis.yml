@@ -16,5 +16,5 @@ before_install:
   - brew tap Skycoder42/qt-modules
 
 script:
-  - brew install $FORMULA
+  - brew install $FORMULA || ./print-logs.sh
   - brew test $FORMULA
