@@ -9,3 +9,5 @@ for file in $(ls $LOG_DIR); do
 		echo "    --- file does not exist ---"
 	fi
 done
+
+exit 1
