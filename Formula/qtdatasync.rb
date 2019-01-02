@@ -39,9 +39,14 @@ class Qtdatasync < Qtformula
 		end
 		ENV["PKG_CONFIG_PATH"] = "#{Dir.pwd}/pkgconfig:#{ENV["PKG_CONFIG_PATH"]}"
 		
+		# enforce system cryptopp
+		File.open(".qmake.conf", "a") do |conffile|
+			conffile.write("CONFIG += system_cryptopp\n")
+		end
+		
 		# build and install (with system_cryptopp)
 		add_modules "qtjsonserializer", "qtservice"
-		build_and_install "CONFIG+=release system_cryptopp"
+		build_and_install_default
 		create_mod_pri prefix, "datasync"
 	end
 	
