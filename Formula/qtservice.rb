@@ -20,6 +20,7 @@ class Qtservice < Qtformula
 	depends_on "graphviz" => [:build, "with-docs"]
 	
 	def install
+		prepare_qdep
 		build_and_install_default
 		create_mod_pri prefix, "service"
 	end

@@ -21,6 +21,7 @@ class Qtrestclient < Qtformula
 	depends_on "graphviz" => [:build, "with-docs"]
 	
 	def install
+		prepare_qdep
 		add_modules "qtjsonserializer"
 		build_and_install_default
 		create_mod_pri prefix, "restclient"

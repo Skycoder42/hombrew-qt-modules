@@ -44,6 +44,7 @@ class Qtdatasync < Qtformula
 		end
 		
 		# build and install (with system_cryptopp)
+		prepare_qdep
 		add_modules "qtjsonserializer", "qtservice"
 		build_and_install_default
 		create_mod_pri prefix, "datasync"
