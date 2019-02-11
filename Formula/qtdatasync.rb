@@ -18,7 +18,8 @@ class Qtdatasync < Qtformula
 	depends_on "cryptopp"
 	depends_on :xcode => :build
 	depends_on "pkg-config" => :build
-	depends_on "python3" => :build
+	depends_on "qdep" => :build
+	depends_on "python3" => [:build, "with-docs"]
 	depends_on "doxygen" => [:build, "with-docs"]
 	depends_on "graphviz" => [:build, "with-docs"]
 	

@@ -4,8 +4,8 @@ os: osx
 osx_image: xcode10.1
 
 env:
+  - FORMULA="qdep"
   - FORMULA="qtjsonserializer"
-  - FORMULA="qpmx"
   - FORMULA="qtservice"
   - FORMULA="qtrestclient"
   - FORMULA="qtdatasync"

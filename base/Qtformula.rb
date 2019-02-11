@@ -35,8 +35,6 @@ class Qtformula < Formula
 	end
 	
 	def build_and_install(*qmake_args)
-		system "python3", "-m", "pip", "install", "qdep"
-		
 		Dir.mkdir ".git"
 		Dir.mkdir "build"
 		Dir.chdir "build"
