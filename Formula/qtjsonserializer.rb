@@ -1,12 +1,12 @@
 require_relative "../base/Qtformula"
 
 class Qtjsonserializer < Qtformula
-	version "3.2.0"
+	version "3.3.0"
 	revision 1
 	desc "A library to perform generic seralization and deserialization of QObjects"
 	homepage "https://skycoder42.github.io/QtJsonSerializer/"
 	url "https://github.com/Skycoder42/QtJsonSerializer/archive/#{version}.tar.gz"
-	sha256 "3b0f1b339c6c26b1c8781364269405158b86faa64c765da388c5d01bb3441c82"
+	sha256 "2f9df81f07f0a55928ea0c1a9ad5eb414ac5525dec268f6291829e21b58d0f09"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
@@ -14,7 +14,7 @@ class Qtjsonserializer < Qtformula
 	
 	depends_on "qt"
 	depends_on :xcode => :build
-	depends_on "python3" => [:build, "with-docs"]
+	depends_on "python3" => :build
 	depends_on "doxygen" => [:build, "with-docs"]
 	depends_on "graphviz" => [:build, "with-docs"]
 	

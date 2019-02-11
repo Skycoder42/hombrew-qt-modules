@@ -1,12 +1,12 @@
 require_relative "../base/Qtformula"
 
 class Qtrestclient < Qtformula
-	version "2.1.0"
+	version "2.1.1"
 	revision 1
 	desc "A library for generic JSON-based REST-APIs, with a mechanism to map JSON to Qt objects"
 	homepage "https://github.com/Skycoder42/QtRestClient/"
 	url "https://github.com/Skycoder42/QtRestClient/archive/#{version}.tar.gz"
-	sha256 "751663a567c9f09886d3b2140c0abedecce8699bd1df3f4075e066663f0a3f1a"
+	sha256 "7c43acfbf77b46968503759fd5d381098b17494c105dced252abe4673a2be1d5"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
@@ -15,9 +15,7 @@ class Qtrestclient < Qtformula
 	depends_on "qt"
 	depends_on "qtjsonserializer"
 	depends_on :xcode => :build
-	depends_on "qpmx" => :build
-	depends_on "qpm" => :build
-	depends_on "python3" => [:build, "with-docs"]
+	depends_on "python3" => :build
 	depends_on "doxygen" => [:build, "with-docs"]
 	depends_on "graphviz" => [:build, "with-docs"]
 	

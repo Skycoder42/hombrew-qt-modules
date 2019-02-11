@@ -35,17 +35,17 @@ class Qtformula < Formula
 	end
 	
 	def build_and_install(*qmake_args)
+		system "python3", "-m", "pip", "install", "qdep"
+		
 		Dir.mkdir ".git"
 		Dir.mkdir "build"
 		Dir.chdir "build"
 		
-		ENV["QPMX_CACHE_DIR"] = "#{ENV["HOME"]}/.qpmx-cache"
-		system "mkdir", "-p", "#{ENV["QPMX_CACHE_DIR"]}"
+		ENV["QDEP_CACHE_DIR"] = "#{ENV["HOME"]}/.qdep-cache"
+		system "mkdir", "-p", "#{ENV["QDEP_CACHE_DIR"]}"
 		
 		system "qmake", qmake_args, ".."
-		system "make", "qmake_all"
 		system "make"
-		system "make", "lrelease"
 		
 		if build.with? "docs"
 			system "make", "doxygen"
