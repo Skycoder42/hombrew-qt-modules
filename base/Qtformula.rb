@@ -35,12 +35,15 @@ class Qtformula < Formula
 	end
 	
 	def build_and_install(*qmake_args)
+		Dir.mkdir ".qdep"
+		qdep_dir = "#{Dir.pwd}/.qdep"
+		system "qdep", "prfgen", "-d", qdep_dir
+		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{qdep_dir}"
+		ENV["QDEP_CACHE_DIR"] = "#{qdep_dir}/cache"
+		
 		Dir.mkdir ".git"
 		Dir.mkdir "build"
 		Dir.chdir "build"
-		
-		ENV["QDEP_CACHE_DIR"] = "#{ENV["HOME"]}/.qdep-cache"
-		system "mkdir", "-p", "#{ENV["QDEP_CACHE_DIR"]}"
 		
 		system "qmake", qmake_args, ".."
 		system "make"
