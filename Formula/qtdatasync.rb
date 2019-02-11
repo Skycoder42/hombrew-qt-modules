@@ -12,6 +12,9 @@ class Qtdatasync < Qtformula
 	
 	option "with-docs", "Build documentation"
 	
+	patch :DATA
+	patch :p0, :DATA
+	
 	depends_on "qt"
 	depends_on "qtjsonserializer"
 	depends_on "qtservice"
@@ -75,3 +78,21 @@ class Qtdatasync < Qtformula
 		system "./test"
 	end
 end
+
+__END__
+diff --git a/tools/appserver/appserver.pro b/tools/appserver/appserver.pro
+index b9580a7..f15d2e4 100644
+--- a/tools/appserver/appserver.pro
++++ b/tools/appserver/appserver.pro
+@@ -48,10 +48,7 @@ DISTFILES += $$SVC_CONFIG_FILES \
+		
+include(../../src/messages/messages.pri)
+
+-osx:!debug_and_release {
+	-	CONFIG(release, debug|release): QDEP_LINK_DEPENDS = ../../src/messages/release/messages.pro
+-	else:CONFIG(debug, debug|release): QDEP_LINK_DEPENDS = ../../src/messages/debug/messages.pro
+-} else: QDEP_LINK_DEPENDS += ../../src/messages
++QDEP_LINK_DEPENDS += ../../src/messages
+
+win32 {
+	QMAKE_TARGET_PRODUCT = "Qt Datasync Server"
