@@ -12,9 +12,6 @@ class Qtdatasync < Qtformula
 	
 	option "with-docs", "Build documentation"
 	
-	patch :DATA
-	patch :p0, :DATA
-	
 	depends_on "qt"
 	depends_on "qtjsonserializer"
 	depends_on "qtservice"
@@ -25,6 +22,8 @@ class Qtdatasync < Qtformula
 	depends_on "python3" => [:build, "with-docs"]
 	depends_on "doxygen" => [:build, "with-docs"]
 	depends_on "graphviz" => [:build, "with-docs"]
+	
+	patch :DATA
 	
 	def install
 		# create cryptopp pkgconfig
