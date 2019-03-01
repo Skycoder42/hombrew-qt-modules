@@ -4,18 +4,27 @@ os: osx
 osx_image: xcode10.1
 
 env:
-  - FORMULA="qdep"
-  - FORMULA="qtjsonserializer"
-  - FORMULA="qtservice"
-  - FORMULA="qtrestclient"
-  - FORMULA="qtdatasync"
-  - FORMULA="qtmvvm"
-  - FORMULA="qtapng"
+  - FORMULA=qdep
+  - FORMULA=qtjsonserializer
+  - FORMULA=qtservice
+  - FORMULA=qtrestclient
+  - FORMULA=qtdatasync
+  - FORMULA=qtmvvm
+  - FORMULA=qtapng
+
+
+matrix:
+  include:
+    - os: osx
+      env:
+        - FORMULA=qtmvvm
+        - BREW_ARGS=--without-datasync
+        - BUILD_EXAMPLES=true
 
 before_install:
   - brew update
   - brew tap Skycoder42/qt-modules
 
 script:
-  - brew install $FORMULA || ./print-logs.sh
+  - brew install $FORMULA $BREW_ARGS || ./print-logs.sh
   - brew test $FORMULA
