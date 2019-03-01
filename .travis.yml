@@ -10,6 +10,7 @@ env:
   - FORMULA="qtrestclient"
   - FORMULA="qtdatasync"
   - FORMULA="qtmvvm"
+  - FORMULA="qtapng"
 
 before_install:
   - brew update

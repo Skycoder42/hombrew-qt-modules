@@ -1,12 +1,12 @@
 require_relative "../base/Qtformula"
 
-class Qtjsonserializer < Qtformula
-	version "3.3.0"
+class Qtapng < Qtformula
+	version "1.1.1"
 	revision 1
-	desc "A library to perform generic seralization and deserialization of QObjects"
-	homepage "https://github.com/Skycoder42/QtJsonSerializer/"
-	url "https://github.com/Skycoder42/QtJsonSerializer/archive/#{version}.tar.gz"
-	sha256 "2f9df81f07f0a55928ea0c1a9ad5eb414ac5525dec268f6291829e21b58d0f09"
+	desc "An apng image plugin for Qt to support animated PNGs"
+	homepage "https://github.com/Skycoder42/QtApng"
+	url "https://github.com/Skycoder42/QtApng/archive/#{version}.tar.gz"
+	sha256 "fc83d2f27d81a2cd70b4c31205d80ecbe9f9323168a71f9260d2b78ee869ab7a"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
@@ -20,27 +20,27 @@ class Qtjsonserializer < Qtformula
 	
 	def install
 		build_and_install_default
-		create_mod_pri prefix, "jsonserializer"
 	end
 	
 	test do
 		(testpath/"test.pro").write <<~EOS
 		CONFIG -= app_bundle
-		QT += jsonserializer
+		QT = core gui
 		SOURCES += main.cpp
 		EOS
 		
 		(testpath/"main.cpp").write <<~EOS
-		#include <QtCore>
-		#include <QtJsonSerializer>
-		int main() {
-			QJsonSerializer s;
-			s.serialize<int>(42);
+		#include <QtGui/QImageReader>
+		#include <QtGui/QMovie>
+		int main(int argc, char **argv) {
+			QGuiApplication a(argc, argv);
+			Q_ASSERT(QImageReader::supportedImageFormats().contains("apng"));
+			Q_ASSERT(QMovie::supportedFormats().contains("apng"));
 			return 0;
 		}
 		EOS
 		
-		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{prefix}"
+		ENV["QT_PLUGIN_PATH"] = "#{ENV["QT_PLUGIN_PATH"]}:#{prefix}/plugins"
 		system "#{Formula["qt"].bin}/qmake", "test.pro"
 		system "make"
 		system "./test"

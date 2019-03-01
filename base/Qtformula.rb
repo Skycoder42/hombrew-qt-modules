@@ -65,7 +65,8 @@ class Qtformula < Formula
 		
 		#create bash src
 		File.open("#{prefix}/bashrc.sh", "w") { |f|
-			f << "export QMAKEPATH=$QMAKEPATH:#{prefix}\n\n"
+			f << "export QMAKEPATH=\"$QMAKEPATH:#{prefix}\"\n"
+			f << "export QT_PLUGIN_PATH=\"$QT_PLUGIN_PATH:#{prefix}/plugins\"\n\n"
 			f << "echo 'WARNING: In order to find eventual plugins, you must export QT_PLUGIN_PATH before running an application built against this library'\n"
 		}
 	end
