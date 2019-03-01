@@ -18,6 +18,7 @@ matrix:
       env:
         - FORMULA=qtmvvm
         - BREW_ARGS="--without-qtdatasync"
+        - TEST_DEPENDS="qtdatasync"  # brew needs this to be installed, even with a different option
 
 before_install:
   - brew update
@@ -25,4 +26,5 @@ before_install:
 
 script:
   - brew install $FORMULA $BREW_ARGS || ./print-logs.sh
+  - if [ -n "$TEST_DEPENDS" ]; then brew install $TEST_DEPENDS; fi
   - brew test $FORMULA $BREW_ARGS
