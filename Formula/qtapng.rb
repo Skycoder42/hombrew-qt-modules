@@ -30,8 +30,7 @@ class Qtapng < Qtformula
 		EOS
 		
 		(testpath/"main.cpp").write <<~EOS
-		#include <QtGui/QImageReader>
-		#include <QtGui/QMovie>
+		#include <QtGui/QtGui>
 		int main(int argc, char **argv) {
 			QGuiApplication a(argc, argv);
 			Q_ASSERT(QImageReader::supportedImageFormats().contains("apng"));

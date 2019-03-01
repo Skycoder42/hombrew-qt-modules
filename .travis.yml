@@ -12,7 +12,6 @@ env:
   - FORMULA=qtmvvm
   - FORMULA=qtapng
 
-
 matrix:
   include:
     - os: osx
@@ -26,4 +25,4 @@ before_install:
 
 script:
   - brew install $FORMULA $BREW_ARGS || ./print-logs.sh
-  - brew test $FORMULA
+  - brew test $FORMULA $BREW_ARGS
