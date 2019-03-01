@@ -18,8 +18,7 @@ matrix:
     - os: osx
       env:
         - FORMULA=qtmvvm
-        - BREW_ARGS=--without-datasync
-        - BUILD_EXAMPLES=true
+        - BREW_ARGS="--without-qtdatasync"
 
 before_install:
   - brew update

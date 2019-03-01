@@ -59,9 +59,12 @@ class Qtformula < Formula
 		prefix.install Dir["#{instdir}#{HOMEBREW_PREFIX}/Cellar/qt/#{Formula["qt"].pkg_version}/*"]
 		
 		# overwrite pri include
-		FileUtils.mv "#{prefix}/mkspecs/modules", "#{prefix}/mkspecs/modules-inst"
-		Dir.mkdir "#{prefix}/mkspecs/modules"
-		create_qtpath_pri prefix
+		moduleDir = "#{prefix}/mkspecs/modules"
+		if Dir.exists? moduleDir
+			FileUtils.mv moduleDir, "#{moduleDir}-inst"
+			Dir.mkdir moduleDir
+			create_qtpath_pri prefix
+		end
 		
 		#create bash src
 		File.open("#{prefix}/bashrc.sh", "w") { |f|
