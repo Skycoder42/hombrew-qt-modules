@@ -1,12 +1,12 @@
 require_relative "../base/Qtformula"
 
 class Qtdatasync < Qtformula
-	version "4.2.2"
+	version "4.2.3"
 	revision 1
 	desc "A simple offline-first synchronisation framework, to synchronize data of Qt applications between devices"
 	homepage "https://github.com/Skycoder42/QtDataSync"
 	url "https://github.com/Skycoder42/QtDataSync/archive/#{version}.tar.gz"
-	sha256 "eeb2a7cbc0d781bed363cd85edd75e23b8b27f9a7482138ba88dd1d818939029"
+	sha256 "92c89777c00412e148b550628eeca65c049f3f450fa74e5d81fdb50429d79a82"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	

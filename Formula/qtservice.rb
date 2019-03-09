@@ -1,12 +1,12 @@
 require_relative "../base/Qtformula"
 
 class Qtservice < Qtformula
-	version "1.1.1"
+	version "2.0.0"
 	revision 1
 	desc "A platform independent library to easily create system services and use some of their features"
 	homepage "https://github.com/Skycoder42/QtService"
 	url "https://github.com/Skycoder42/QtService/archive/#{version}.tar.gz"
-	sha256 "902416aee6feb6c8bff1136206d2ce079a62b01e70ccaea6c1fea0e0adbb77f2"
+	sha256 "8fa6d7f94c1ba43746c0baa0eaa3a69ca433341e94b135dc624f2eff4e0c9e83"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
@@ -28,7 +28,7 @@ class Qtservice < Qtformula
 	test do
 		(testpath/"test.pro").write <<~EOS
 			CONFIG -= app_bundle
-			CONFIG += c++14
+			CONFIG += c++17
 			QT += service
 			SOURCES += main.cpp
 		EOS
