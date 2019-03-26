@@ -25,6 +25,9 @@ before_install:
   - brew tap Skycoder42/qt-modules
 
 script:
+# run trice because of strange bug
+  - brew install $FORMULA $BREW_ARGS || ./print-logs.sh
+  - brew install $FORMULA $BREW_ARGS || ./print-logs.sh
   - brew install $FORMULA $BREW_ARGS || ./print-logs.sh
   - if [ -n "$TEST_DEPENDS" ]; then brew install $TEST_DEPENDS; fi
   - brew test $FORMULA $BREW_ARGS
