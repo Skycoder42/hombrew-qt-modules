@@ -1,12 +1,13 @@
 language: cpp
 
 os: osx
-osx_image: xcode10.1
+osx_image: xcode10.2
 
 env:
   - FORMULA=qdep
   - FORMULA=qtjsonserializer
   - FORMULA=qtservice
+  - FORMULA=qtautoupdater
   - FORMULA=qtrestclient
   - FORMULA=qtdatasync
   - FORMULA=qtmvvm
