@@ -22,6 +22,7 @@ jobs:
 
     runs-on: macos-latest
     steps:
+      - uses: actions/setup-python@v1
       - name: Update and prepare brew tap
         run: |
           brew update 
