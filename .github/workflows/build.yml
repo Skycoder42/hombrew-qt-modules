@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         formula:
           #- qdep
@@ -22,6 +22,7 @@ jobs:
 
     runs-on: macos-latest
     steps:
+      - uses: actions/checkout@v1
       - uses: actions/setup-python@v1
       - name: prepare stuff
         run: |
