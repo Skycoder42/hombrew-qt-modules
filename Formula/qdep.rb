@@ -1,12 +1,12 @@
 class Qdep < Formula
 	include Language::Python::Virtualenv
 	
-	version "1.0.1"
+	version "1.1.1"
 	revision 1
 	desc "A very basic yet simple to use dependency management tool for qmake based projects"
 	homepage "https://github.com/Skycoder42/qdep"
 	url "https://github.com/Skycoder42/qdep/archive/#{version}.tar.gz"
-	sha256 "e5a94160e60f4d0dee2ec62ed1fe1925739793868f6aac1a94d124d683a99c83"
+	sha256 "b42a8f934d1114e6d7b32c78c513b153fe15fd0e7eb55872af0726ca6514dcec"
 	
 	depends_on "python3"
 	
@@ -17,8 +17,8 @@ class Qdep < Formula
 	end
 	
 	resource "argcomplete" do
-		url "https://files.pythonhosted.org/packages/3c/21/9741e5e5e63245a8cdafb32ffc738bff6e7ef6253b65953e77933e56ce88/argcomplete-1.9.4.tar.gz"
-		sha256 "06c8a54ffaa6bfc9006314498742ec8843601206a3b94212f82657673662ecf1"
+		url "https://files.pythonhosted.org/packages/43/61/345856864a72ccc004bea5f74183c58bfd6675f9eab931ff9ce21a8fe06b/argcomplete-1.11.1.tar.gz"
+		sha256 "5ae7b601be17bf38a749ec06aa07fb04e7b6b5fc17906948dc1866e7facf3740"
 	end
 	
 	resource "appdirs" do

@@ -1,0 +1,37 @@
+name: CI build
+
+on: 
+  push:
+  schedule:
+    - cron:  '0 0 13 * *'
+
+jobs:
+  build:
+    strategy:
+      fail-fast: true
+      matrix:
+        formula:
+          - qdep
+          - qtjsonserializer
+          - qtservice
+          - qtautoupdater
+          - qtrestclient
+          #- qtdatasync
+          #- qtmvvm
+          - qtapng
+
+    runs-on: macos-latest
+    steps:
+      - name: Update and prepare brew tap
+        run: |
+          brew update 
+          brew tap Skycoder42/qt-modules
+      - name: Install test module
+        run: brew install ${{matrix.formula}} ${{matrix.install-args}}
+      - name: Print error logs
+        if: failure()
+        run: |
+          export LOG_DIR=/Users/travis/Library/Logs/Homebrew/${{matrix.formula}}/
+          ./print-logs.sh
+      - name: Test the module
+        run: brew test ${{matrix.formula}} ${{matrix.test-args}}

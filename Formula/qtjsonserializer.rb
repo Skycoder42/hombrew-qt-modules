@@ -1,12 +1,12 @@
 require_relative "../base/Qtformula"
 
 class Qtjsonserializer < Qtformula
-	version "3.3.1"
+	version "4.0.2"
 	revision 1
 	desc "A library to perform generic seralization and deserialization of QObjects"
 	homepage "https://github.com/Skycoder42/QtJsonSerializer/"
 	url "https://github.com/Skycoder42/QtJsonSerializer/archive/#{version}.tar.gz"
-	sha256 "bfca092fac62980aa07c711b7ea836ad7f2cb55b4c80fc3e0af8b9579abf8db6"
+	sha256 "17800689d81313265afeee982ecd8d2b1f86a8643361e8dea3d921a42647b5c3"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
@@ -34,7 +34,7 @@ class Qtjsonserializer < Qtformula
 		#include <QtCore>
 		#include <QtJsonSerializer>
 		int main() {
-			QJsonSerializer s;
+			QtJsonSerializer::JsonSerializer s;
 			s.serialize<int>(42);
 			return 0;
 		}

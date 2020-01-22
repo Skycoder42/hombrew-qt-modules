@@ -2,11 +2,11 @@ require_relative "../base/Qtformula"
 
 class Qtautoupdater < Qtformula
 	version "3.0.0"
-	revision 1
+	revision 3
 	desc "A Qt library to automatically check for updates and install them"
-	homepage "https://github.com/Skycoder42/QtAutoUpdater/"
-	url "https://github.com/Skycoder42/QtAutoUpdater/archive/#{version}.tar.gz"
-	sha256 "26294429597b85fecaf51eb534edd9898d3652d97262e13a96b3aa346645956b"
+	homepage "https://github.com/Skycoder42/QtAutoUpdater/"
+	url "https://github.com/Skycoder42/QtAutoUpdater/archive/#{version}-3.tar.gz"
+	sha256 "14041ec32920c2e561897c6d4db2b238aabc1c259ed0e92f51dedcd18be6627d"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	

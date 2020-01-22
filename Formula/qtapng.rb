@@ -1,12 +1,12 @@
 require_relative "../base/Qtformula"
 
 class Qtapng < Qtformula
-	version "1.1.1"
+	version "1.1.2"
 	revision 1
 	desc "An apng image plugin for Qt to support animated PNGs"
 	homepage "https://github.com/Skycoder42/QtApng"
 	url "https://github.com/Skycoder42/QtApng/archive/#{version}.tar.gz"
-	sha256 "fc83d2f27d81a2cd70b4c31205d80ecbe9f9323168a71f9260d2b78ee869ab7a"
+	sha256 "d985540ea83b8944e514151cdc15acf4db0dce77895c2697053974817ed1bc03"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	

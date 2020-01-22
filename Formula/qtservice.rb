@@ -1,12 +1,12 @@
 require_relative "../base/Qtformula"
 
 class Qtservice < Qtformula
-	version "2.0.1"
-	revision 1
+	version "2.0.2"
+	revision 2
 	desc "A platform independent library to easily create system services and use some of their features"
 	homepage "https://github.com/Skycoder42/QtService"
-	url "https://github.com/Skycoder42/QtService/archive/#{version}.tar.gz"
-	sha256 "9066acdba72b5e732b628f10e63fda5a9d408335cd47a936684647abeff27489"
+	url "https://github.com/Skycoder42/QtService/archive/#{version}-2.tar.gz"
+	sha256 "02aba976b8bd62b919d03febbc114eed77635fcdef95f8c39f6173eb3d2c10c0"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
