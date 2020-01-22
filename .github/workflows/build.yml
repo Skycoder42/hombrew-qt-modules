@@ -29,6 +29,7 @@ jobs:
           brew update 
           brew tap Skycoder42/qt-modules
           pip install qdep
+          qdep --version
       - name: Install test module
         run: brew install ${{matrix.formula}} ${{matrix.install-args}}
       - name: Print error logs
