@@ -26,6 +26,8 @@ class Qtjsonserializer < Qtformula
 	test do
 		(testpath/"test.pro").write <<~EOS
 		CONFIG -= app_bundle
+		CONFIG += c++17
+		QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.14
 		QT += jsonserializer
 		SOURCES += main.cpp
 		EOS

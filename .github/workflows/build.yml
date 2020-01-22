@@ -34,7 +34,7 @@ jobs:
       - name: Print error logs
         if: failure()
         run: |
-          export LOG_DIR=/Users/travis/Library/Logs/Homebrew/${{matrix.formula}}/
+          export LOG_DIR=$HOME/Library/Logs/Homebrew/${{matrix.formula}}/
           ./print-logs.sh
       - name: Test the module
         run: brew test ${{matrix.formula}} ${{matrix.test-args}}
