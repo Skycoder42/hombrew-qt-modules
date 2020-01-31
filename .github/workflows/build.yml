@@ -27,7 +27,6 @@ jobs:
         run: |
           brew update 
           brew tap Skycoder42/qt-modules
-          pip install -Iv importlib-metadata==0.23
       - name: Install test module
         run: brew install ${{matrix.formula}} ${{matrix.install-args}}
       - name: Print error logs
