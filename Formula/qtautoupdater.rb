@@ -47,6 +47,10 @@ class Qtautoupdater < Qtformula
 		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{prefix}"
 		system "#{Formula["qt"].bin}/qmake", "test.pro"
 		system "make"
+		
+		ENV["QT_PLUGIN_PATH"] = "#{ENV["QT_PLUGIN_PATH"]}:#{prefix}/plugins"
+		ENV["DYLD_LIBRARY_PATH"] = "#{ENV["DYLD_FRAMEWORK_PATH"]}:#{prefix}/lib"
+		ENV["DYLD_FRAMEWORK_PATH"] = "#{ENV["DYLD_FRAMEWORK_PATH"]}:#{prefix}/lib"
 		system "./test"
 	end
 end
