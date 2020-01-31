@@ -30,7 +30,6 @@ class Qtautoupdater < Qtformula
 		(testpath/"test.pro").write <<~EOS
 		CONFIG -= app_bundle
 		CONFIG += c++17
-		QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.14
 		QT += autoupdatercore
 		SOURCES += main.cpp
 		EOS
@@ -38,6 +37,7 @@ class Qtautoupdater < Qtformula
 		(testpath/"main.cpp").write <<~EOS
 		#include <QtAutoUpdaterCore>
 		int main() {
+			qDebug() << QtAutoUpdater::Updater::supportedUpdaterBackends();
 			auto updater = QtAutoUpdater::Updater::create("homebrew");
 			return updater != nullptr ? 0 : 1;
 		}

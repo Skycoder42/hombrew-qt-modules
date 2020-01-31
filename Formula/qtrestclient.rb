@@ -2,11 +2,11 @@ require_relative "../base/Qtformula"
 
 class Qtrestclient < Qtformula
 	version "3.0.0"
-	revision 1
+	revision 3
 	desc "A library for generic JSON-based REST-APIs, with a mechanism to map JSON to Qt objects"
 	homepage "https://github.com/Skycoder42/QtRestClient/"
-	url "https://github.com/Skycoder42/QtRestClient/archive/#{version}.tar.gz"
-	sha256 "1276b4c1eb66efcf79f85c53dcb642a7bd8cfcacadddfb6f219a7387b4ef41db"
+	url "https://github.com/Skycoder42/QtRestClient/archive/#{version}-3.tar.gz"
+	sha256 "8912d62ca4121a0ddbbf3e31c6dbf15c2576482f1b0f8664cfc06b6b48c36265"
 	
 	keg_only "Qt itself is keg only which implies the same for Qt modules"
 	
