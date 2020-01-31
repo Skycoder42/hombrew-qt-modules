@@ -35,12 +35,12 @@ class Qtservice < Qtformula
 		EOS
 		
 		(testpath/"main.cpp").write <<~EOS
-			#include <QtCore>
 			#include <QtService>
 			int main(int argc, char *argv[]) {
 				QCoreApplication app(argc, argv);
-				auto control = QtService::ServiceControl::create("standard", "test", nullptr);
-				return 0;
+				qDebug() << QtService::ServiceControl::listBackends();
+				auto control = QtService::ServiceControl::create("launchd", "test", nullptr);
+				return control != nullptr ? 0 : 1;
 			}
 		EOS
 		

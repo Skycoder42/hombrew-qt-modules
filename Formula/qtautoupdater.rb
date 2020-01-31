@@ -28,19 +28,20 @@ class Qtautoupdater < Qtformula
 	
 	test do
 		(testpath/"test.pro").write <<~EOS
-		CONFIG -= app_bundle
-		CONFIG += c++17
-		QT += autoupdatercore
-		SOURCES += main.cpp
+			CONFIG -= app_bundle
+			CONFIG += c++17
+			QT += autoupdatercore
+			SOURCES += main.cpp
 		EOS
 		
 		(testpath/"main.cpp").write <<~EOS
-		#include <QtAutoUpdaterCore>
-		int main() {
-			qDebug() << QtAutoUpdater::Updater::supportedUpdaterBackends();
-			auto updater = QtAutoUpdater::Updater::create("homebrew");
-			return updater != nullptr ? 0 : 1;
-		}
+			#include <QtAutoUpdaterCore>
+			int main(int argc, char *argv[]) {
+				QCoreApplication app(argc, argv);
+				qDebug() << QtAutoUpdater::Updater::supportedUpdaterBackends();
+				auto updater = QtAutoUpdater::Updater::create("homebrew");
+				return updater != nullptr ? 0 : 1;
+			}
 		EOS
 		
 		ENV["QMAKEPATH"] = "#{ENV["QMAKEPATH"]}:#{prefix}"
