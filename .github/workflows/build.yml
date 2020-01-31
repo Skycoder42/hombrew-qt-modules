@@ -23,11 +23,12 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-python@v1
-      - name: prepare stuff
+      - name: Install dependencies
         run: |
           brew update 
           brew tap Skycoder42/qt-modules
-      - name: Install test module
+          brew install --only-dependencies ${{matrix.formula}} ${{matrix.install-args}}
+      - name: Install formula
         run: brew install ${{matrix.formula}} ${{matrix.install-args}}
       - name: Print error logs
         if: failure()
