@@ -39,7 +39,9 @@ class Qtautoupdater < Qtformula
 			int main(int argc, char *argv[]) {
 				QCoreApplication app(argc, argv);
 				qDebug() << QtAutoUpdater::Updater::supportedUpdaterBackends();
-				auto updater = QtAutoUpdater::Updater::create("homebrew");
+				auto updater = QtAutoUpdater::Updater::create("homebrew", {
+					{"packages", "qtautoupdater"}
+				});
 				return updater != nullptr ? 0 : 1;
 			}
 		EOS
